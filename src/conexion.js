@@ -4,7 +4,7 @@ const mySqlConnection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "eden_db",
+  database: "newsletter",
 });
 
 mySqlConnection.connect(function (err) {

@@ -4,7 +4,7 @@ const app = express(); // create express app
 const cors = require("cors");
 
 app.set("port", process.env.PORT || 3000); // set the port
-const whiteList = ["http://localhost:4200"];
+const whiteList = ["http://localhost:3000"];
 
 app.use(express.json()); // for parsing application/json
 
@@ -23,3 +23,5 @@ app.listen(app.get("port"), () => {
 
 
 
+//estas son las rutas para hacer uso de cada una de las tablas
+app.use(require("./apis/tipo_documento"));
