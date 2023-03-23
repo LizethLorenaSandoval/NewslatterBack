@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2023 a las 23:48:54
+-- Tiempo de generación: 22-03-2023 a las 21:24:27
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -41,8 +41,16 @@ CREATE TABLE `archivo_adjunto` (
 
 CREATE TABLE `celula` (
   `id_celula` int(11) NOT NULL,
-  `nombre_celula` int(11) NOT NULL
+  `nombre_celula` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `celula`
+--
+
+INSERT INTO `celula` (`id_celula`, `nombre_celula`) VALUES
+(1, 'PENSIONES VOLUNTARIAS'),
+(2, 'REGULATORIOS');
 
 -- --------------------------------------------------------
 
@@ -67,8 +75,16 @@ CREATE TABLE `comentarios` (
 
 CREATE TABLE `estado_nota` (
   `id_estado_nota` int(11) NOT NULL,
-  `nombre_estado_nota` int(11) NOT NULL
+  `nombre_estado_nota` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `estado_nota`
+--
+
+INSERT INTO `estado_nota` (`id_estado_nota`, `nombre_estado_nota`) VALUES
+(1, 'NORMAL'),
+(2, 'IMPORTANTE');
 
 -- --------------------------------------------------------
 
@@ -78,8 +94,16 @@ CREATE TABLE `estado_nota` (
 
 CREATE TABLE `estado_rol` (
   `id_estado_rol` int(11) NOT NULL,
-  `nombre_estado_rol` varchar(100) NOT NULL
+  `nombre_estado_rol` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `estado_rol`
+--
+
+INSERT INTO `estado_rol` (`id_estado_rol`, `nombre_estado_rol`) VALUES
+(1, 'ACTIVO'),
+(2, 'INACTIVO');
 
 -- --------------------------------------------------------
 
@@ -92,7 +116,7 @@ CREATE TABLE `nota` (
   `titulo` varchar(100) NOT NULL,
   `descripcion` text NOT NULL,
   `id_celula` int(11) NOT NULL,
-  `hora_fecha` date NOT NULL,
+  `hora_fecha` datetime NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `likes_total` int(11) NOT NULL,
   `comentarios_total` int(11) NOT NULL,
@@ -107,9 +131,17 @@ CREATE TABLE `nota` (
 
 CREATE TABLE `rol` (
   `id_rol` int(11) NOT NULL,
-  `nombre_rol` varchar(100) NOT NULL,
+  `nombre_rol` varchar(50) NOT NULL,
   `estado_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `rol`
+--
+
+INSERT INTO `rol` (`id_rol`, `nombre_rol`, `estado_rol`) VALUES
+(1, 'ADMINISTRADOR', 1),
+(2, 'USUARIO', 1);
 
 -- --------------------------------------------------------
 
@@ -121,6 +153,15 @@ CREATE TABLE `tipo_documento` (
   `id_tipo_documento` int(11) NOT NULL,
   `tipo_documento` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_documento`
+--
+
+INSERT INTO `tipo_documento` (`id_tipo_documento`, `tipo_documento`) VALUES
+(1, 'TI'),
+(2, 'CC'),
+(3, 'CE');
 
 -- --------------------------------------------------------
 
@@ -151,7 +192,7 @@ CREATE TABLE `usuario` (
 CREATE TABLE `visitas` (
   `id_visitas` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `hora_fecha` date NOT NULL
+  `hora_fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

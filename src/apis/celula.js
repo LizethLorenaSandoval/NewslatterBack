@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const mySqlConnection = require("../conexion");
 
-//? Traer todos los datos de la tabla tipo de documento  ============================================
-router.get("/tipo-documento", (req, res) => {
+//? Traer todos los datos de la tabla celula ============================================
+router.get("/celula", (req, res) => {
     const query =
-      "select * from tipo_documento";
+      "select * from celula";
     mySqlConnection.query(query, (err, rows, fields) => {
       if (!err) {
         res.send(rows);

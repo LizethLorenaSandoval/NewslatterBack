@@ -24,4 +24,21 @@ app.listen(app.get("port"), () => {
 
 
 //estas son las rutas para hacer uso de cada una de las tablas
+
+//? Página inicial
+app.use(require("./apis/initialPage"));
+
+//? celula
+app.use(require("./apis/celula"));
+
+//? estado nota
+app.use(require("./apis/estado_nota"));
+
+//? estado rol
+app.use(require("./apis/estado_rol"));
+
+//? rol
+app.use(require("./apis/rol"));
+
+//? Tipo documento
 app.use(require("./apis/tipo_documento"));

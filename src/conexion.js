@@ -22,6 +22,18 @@ mySqlConnection.connect(function (err) {
   }
 });
 
+//? con esto validas si te trae datos de la base de datos
+// mySqlConnection.query('select * from celula', function(error, results,fields){
+//   if(error)
+//   throw error;
+
+//   results.forEach(results => {
+//     console.log(results);
+//   })
+
+// }) 
+  
+
 module.exports = mySqlConnection; //super importante poner esto porque si no paila la app
 
 /* 
