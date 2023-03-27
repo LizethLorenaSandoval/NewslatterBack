@@ -8,11 +8,7 @@ const whiteList = ["http://localhost:3000"];
 
 app.use(express.json()); // for parsing application/json
 
-app.use(
-  cors({
-    origin: whiteList,
-  })
-);
+app.use(cors()); //esta vaina es para politicas de cors
 
 app.listen(app.get("port"), () => {
   console.log("")
