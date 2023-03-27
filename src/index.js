@@ -37,6 +37,9 @@ app.use(require("./apis/estado_nota"));
 //? estado rol
 app.use(require("./apis/estado_rol"));
 
+//? nota
+app.use(require("./apis/nota"));
+
 //? rol
 app.use(require("./apis/rol"));
 
