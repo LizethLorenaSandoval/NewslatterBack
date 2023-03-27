@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-03-2023 a las 21:24:27
+-- Tiempo de generación: 27-03-2023 a las 16:24:21
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -115,13 +115,22 @@ CREATE TABLE `nota` (
   `id_nota` int(11) NOT NULL,
   `titulo` varchar(100) NOT NULL,
   `descripcion` text NOT NULL,
-  `id_celula` int(11) NOT NULL,
-  `hora_fecha` datetime NOT NULL,
+  `id_celula` int(11) DEFAULT NULL,
+  `hora_fecha` datetime DEFAULT NULL,
   `id_usuario` int(11) NOT NULL,
-  `likes_total` int(11) NOT NULL,
-  `comentarios_total` int(11) NOT NULL,
+  `likes_total` int(11) DEFAULT NULL,
+  `comentarios_total` int(11) DEFAULT NULL,
   `estado_nota` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `nota`
+--
+
+INSERT INTO `nota` (`id_nota`, `titulo`, `descripcion`, `id_celula`, `hora_fecha`, `id_usuario`, `likes_total`, `comentarios_total`, `estado_nota`) VALUES
+(1, 'Primera nota', 'Esta es la primera nota xd', 1, '2023-03-27 09:19:46', 1, 0, 0, 1),
+(3, 'Segunda nota ', 'Esta es la segunda nota xd', 2, '2023-03-27 09:20:13', 1, 0, 0, 2),
+(5, 'Tercera nota ', 'Esta es la tercera nota xd', 2, '2023-03-27 09:20:13', 1, 0, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -182,6 +191,13 @@ CREATE TABLE `usuario` (
   `forgot_token` varchar(1000) NOT NULL,
   `foto` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `estado_usuario`, `documento`, `id_tipo_documento`, `correo`, `contraseña`, `id_rol`, `forgot_token`, `foto`) VALUES
+(1, 'fulanito', 'de tal', 1, 111, 1, 'fulanito@detal.com', '123', 2, '', '');
 
 -- --------------------------------------------------------
 
