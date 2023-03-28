@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-03-2023 a las 21:07:17
+-- Tiempo de generación: 28-03-2023 a las 23:08:02
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `archivo_adjunto` (
   `id_archivo` int(11) NOT NULL,
   `id_nota` int(11) NOT NULL,
-  `archivo` varchar(1000) NOT NULL
+  `archivo` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -62,7 +62,7 @@ CREATE TABLE `comentarios` (
   `id_comentario` int(11) NOT NULL,
   `descripcion` text NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `likes_total` int(11) NOT NULL,
+  `likes_total` int(11) NOT NULL DEFAULT 0,
   `hora_fecha` date NOT NULL,
   `id_nota` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -115,11 +115,11 @@ CREATE TABLE `nota` (
   `id_nota` int(11) NOT NULL,
   `titulo` varchar(100) NOT NULL,
   `descripcion` text NOT NULL,
-  `id_celula` int(11) DEFAULT NULL,
-  `hora_fecha` datetime DEFAULT NULL,
+  `id_celula` int(11) NOT NULL,
+  `hora_fecha` datetime NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `likes_total` int(11) DEFAULT NULL,
-  `comentarios_total` int(11) DEFAULT NULL,
+  `likes_total` int(11) NOT NULL DEFAULT 0,
+  `comentarios_total` int(11) NOT NULL DEFAULT 0,
   `estado_nota` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -141,7 +141,7 @@ INSERT INTO `nota` (`id_nota`, `titulo`, `descripcion`, `id_celula`, `hora_fecha
 CREATE TABLE `rol` (
   `id_rol` int(11) NOT NULL,
   `nombre_rol` varchar(50) NOT NULL,
-  `estado_rol` int(11) NOT NULL
+  `estado_rol` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -183,21 +183,21 @@ CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
-  `estado_usuario` int(11) NOT NULL,
+  `id_estado_usuario` int(11) NOT NULL DEFAULT 1,
   `documento` bigint(20) NOT NULL,
   `id_tipo_documento` int(11) NOT NULL,
   `correo` varchar(150) NOT NULL,
   `contraseña` varchar(1000) NOT NULL,
   `id_rol` int(11) NOT NULL,
-  `forgot_token` varchar(1000) NOT NULL,
-  `foto` varchar(1000) NOT NULL
+  `forgot_token` varchar(1000) DEFAULT NULL,
+  `foto` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `estado_usuario`, `documento`, `id_tipo_documento`, `correo`, `contraseña`, `id_rol`, `forgot_token`, `foto`) VALUES
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `id_estado_usuario`, `documento`, `id_tipo_documento`, `correo`, `contraseña`, `id_rol`, `forgot_token`, `foto`) VALUES
 (1, 'fulanito', 'de tal', 1, 111, 1, 'fulanito@detal.com', '123', 2, '', '');
 
 -- --------------------------------------------------------
