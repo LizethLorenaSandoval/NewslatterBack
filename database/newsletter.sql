@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2023 a las 16:24:21
+-- Tiempo de generación: 28-03-2023 a las 21:07:17
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -160,17 +160,18 @@ INSERT INTO `rol` (`id_rol`, `nombre_rol`, `estado_rol`) VALUES
 
 CREATE TABLE `tipo_documento` (
   `id_tipo_documento` int(11) NOT NULL,
-  `tipo_documento` varchar(50) NOT NULL
+  `tipo_documento` varchar(50) NOT NULL,
+  `nombre_tipo_documento` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tipo_documento`
 --
 
-INSERT INTO `tipo_documento` (`id_tipo_documento`, `tipo_documento`) VALUES
-(1, 'TI'),
-(2, 'CC'),
-(3, 'CE');
+INSERT INTO `tipo_documento` (`id_tipo_documento`, `tipo_documento`, `nombre_tipo_documento`) VALUES
+(1, 'TI', 'Tarjeta de identidad'),
+(2, 'CC', 'Cedula de ciudadania'),
+(3, 'CE', 'Cedula de extranjeria');
 
 -- --------------------------------------------------------
 
