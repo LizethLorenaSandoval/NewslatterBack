@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-03-2023 a las 17:34:17
+-- Tiempo de generación: 29-03-2023 a las 18:07:22
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -187,8 +187,8 @@ CREATE TABLE `usuario` (
   `documento` bigint(20) NOT NULL,
   `id_tipo_documento` int(11) NOT NULL,
   `correo` varchar(150) NOT NULL,
-  `contraseña` varchar(1000) NOT NULL,
-  `id_rol` int(11) NOT NULL,
+  `contrasena` varchar(1000) NOT NULL,
+  `id_rol` int(11) NOT NULL DEFAULT 2,
   `forgot_token` varchar(1000) DEFAULT NULL,
   `foto` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -197,7 +197,7 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `id_estado_usuario`, `documento`, `id_tipo_documento`, `correo`, `contraseña`, `id_rol`, `forgot_token`, `foto`) VALUES
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `id_estado_usuario`, `documento`, `id_tipo_documento`, `correo`, `contrasena`, `id_rol`, `forgot_token`, `foto`) VALUES
 (1, 'fulanito', 'de tal', 1, 111, 1, 'fulanito@detal.com', '123', 2, '', '');
 
 -- --------------------------------------------------------
