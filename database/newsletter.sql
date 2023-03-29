@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-03-2023 a las 23:08:02
+-- Tiempo de generación: 29-03-2023 a las 17:34:17
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -83,8 +83,8 @@ CREATE TABLE `estado_nota` (
 --
 
 INSERT INTO `estado_nota` (`id_estado_nota`, `nombre_estado_nota`) VALUES
-(1, 'NORMAL'),
-(2, 'IMPORTANTE');
+(2, 'IMPORTANTE'),
+(1, 'NORMAL');
 
 -- --------------------------------------------------------
 
@@ -169,9 +169,9 @@ CREATE TABLE `tipo_documento` (
 --
 
 INSERT INTO `tipo_documento` (`id_tipo_documento`, `tipo_documento`, `nombre_tipo_documento`) VALUES
-(1, 'TI', 'Tarjeta de identidad'),
 (2, 'CC', 'Cedula de ciudadania'),
-(3, 'CE', 'Cedula de extranjeria');
+(3, 'CE', 'Cedula de extranjeria'),
+(1, 'TI', 'Tarjeta de identidad');
 
 -- --------------------------------------------------------
 
@@ -226,7 +226,8 @@ ALTER TABLE `archivo_adjunto`
 -- Indices de la tabla `celula`
 --
 ALTER TABLE `celula`
-  ADD PRIMARY KEY (`id_celula`);
+  ADD PRIMARY KEY (`id_celula`),
+  ADD UNIQUE KEY `nombre_celula` (`nombre_celula`);
 
 --
 -- Indices de la tabla `comentarios`
@@ -238,13 +239,15 @@ ALTER TABLE `comentarios`
 -- Indices de la tabla `estado_nota`
 --
 ALTER TABLE `estado_nota`
-  ADD PRIMARY KEY (`id_estado_nota`);
+  ADD PRIMARY KEY (`id_estado_nota`),
+  ADD UNIQUE KEY `nombre_estado_nota` (`nombre_estado_nota`);
 
 --
 -- Indices de la tabla `estado_rol`
 --
 ALTER TABLE `estado_rol`
-  ADD PRIMARY KEY (`id_estado_rol`);
+  ADD PRIMARY KEY (`id_estado_rol`),
+  ADD UNIQUE KEY `nombre_estado_rol` (`nombre_estado_rol`);
 
 --
 -- Indices de la tabla `nota`
@@ -256,25 +259,93 @@ ALTER TABLE `nota`
 -- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
-  ADD PRIMARY KEY (`id_rol`);
+  ADD PRIMARY KEY (`id_rol`),
+  ADD UNIQUE KEY `nombre_rol` (`nombre_rol`);
 
 --
 -- Indices de la tabla `tipo_documento`
 --
 ALTER TABLE `tipo_documento`
-  ADD PRIMARY KEY (`id_tipo_documento`);
+  ADD PRIMARY KEY (`id_tipo_documento`),
+  ADD UNIQUE KEY `tipo_documento` (`tipo_documento`,`nombre_tipo_documento`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `correo` (`correo`),
+  ADD UNIQUE KEY `documento` (`documento`);
 
 --
 -- Indices de la tabla `visitas`
 --
 ALTER TABLE `visitas`
   ADD PRIMARY KEY (`id_visitas`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `archivo_adjunto`
+--
+ALTER TABLE `archivo_adjunto`
+  MODIFY `id_archivo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `celula`
+--
+ALTER TABLE `celula`
+  MODIFY `id_celula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `estado_nota`
+--
+ALTER TABLE `estado_nota`
+  MODIFY `id_estado_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `estado_rol`
+--
+ALTER TABLE `estado_rol`
+  MODIFY `id_estado_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `nota`
+--
+ALTER TABLE `nota`
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `rol`
+--
+ALTER TABLE `rol`
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_documento`
+--
+ALTER TABLE `tipo_documento`
+  MODIFY `id_tipo_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `visitas`
+--
+ALTER TABLE `visitas`
+  MODIFY `id_visitas` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
