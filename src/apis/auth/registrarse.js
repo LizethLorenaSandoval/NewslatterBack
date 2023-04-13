@@ -8,8 +8,8 @@ router.post("/registrarse", (req, res) => {
     //* Si no hay usuarios registrados con ese correo, lo deja registrarse (o crear)
     const { correo } = req.body;
     mySqlConnection.query(
-      "SELECT * FROM usuario WHERE correo = ?",
-      [correo],
+      "SELECT * FROM usuario WHERE correo = ? ",
+      [ correo ],
       (err, rows, fields) => {
         if (!err) {
           if (rows.length >= 1) {
@@ -18,14 +18,37 @@ router.post("/registrarse", (req, res) => {
               statusCode: 403,
             });
           } else {
-            //* Si no hay usuarios registrados con el correo, lo deja crear
-            registerUser();
+            //* Si no hay usuarios registrados con el correo, valida el documento
+            validarDoc();
           }
         } else {
           console.log(err);
         }
       }
     );
+
+  //? Validación del documento
+  const validarDoc = () =>  {
+    const { documento } = req.body;
+    mySqlConnection.query(
+      "SELECT * FROM usuario WHERE documento = ? ",
+      [ documento ],
+      (err, rows, fields) => {
+        if (!err) {
+          if (rows.length >= 1) {
+            res.json({
+              status: "Ya hay un usuario registrado con ese documento",
+              statusCode: 403,
+            });
+          } else {
+            //* Si no hay usuarios registrados con el documento, lo deja crear
+            registerUser();
+          }
+        } else {
+          console.log(err);
+        }
+      })
+};
 
 
     //* Función para registrar el usuario
