@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-03-2023 a las 18:07:22
+-- Tiempo de generación: 13-04-2023 a las 21:02:15
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -185,6 +185,7 @@ CREATE TABLE `usuario` (
   `apellido` varchar(100) NOT NULL,
   `id_estado_usuario` int(11) NOT NULL DEFAULT 1,
   `documento` bigint(20) NOT NULL,
+  `id_celula` int(11) NOT NULL,
   `id_tipo_documento` int(11) NOT NULL,
   `correo` varchar(150) NOT NULL,
   `contrasena` varchar(1000) NOT NULL,
@@ -197,8 +198,8 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `id_estado_usuario`, `documento`, `id_tipo_documento`, `correo`, `contrasena`, `id_rol`, `forgot_token`, `foto`) VALUES
-(1, 'fulanito', 'de tal', 1, 111, 1, 'fulanito@detal.com', '123', 2, '', '');
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `id_estado_usuario`, `documento`, `id_celula`, `id_tipo_documento`, `correo`, `contrasena`, `id_rol`, `forgot_token`, `foto`) VALUES
+(1, 'fulanito', 'de tal', 1, 111, 0, 1, 'fulanito@detal.com', '123', 2, '', '');
 
 -- --------------------------------------------------------
 
@@ -339,7 +340,7 @@ ALTER TABLE `tipo_documento`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `visitas`

@@ -53,13 +53,13 @@ router.post("/registrarse", (req, res) => {
 
     //* Función para registrar el usuario
     const registerUser = () => {
-      const { nombre, apellido, documento, id_tipo_documento, correo, contrasena } = req.body;
+      const { nombre, apellido, documento, id_celula, id_tipo_documento, correo, contrasena } = req.body;
       const hash = bcryptjs.hashSync(contrasena, 15);
       const query =
-        "INSERT INTO usuario (nombre, apellido, documento, id_tipo_documento, correo, contrasena) VALUES (?,?,?,?,?,?)";
+        "INSERT INTO usuario (nombre, apellido, documento, id_celula, id_tipo_documento, correo, contrasena) VALUES (?,?,?,?,?,?,?)";
       mySqlConnection.query(
         query,
-        [nombre, apellido, documento, id_tipo_documento, correo, hash],
+        [nombre, apellido, documento, id_celula, id_tipo_documento, correo, hash],
         (err, rows, fields) => {
           if (!err) {
             res.json({ 
@@ -79,6 +79,7 @@ router.post("/registrarse", (req, res) => {
 //     "nombre":"lore",
 //     "apellido":"sandoval",
 //     "documento":"1000206297",
+//     "id_celula":1, 
 //     "id_tipo_documento":"2",
 //     "correo":"fulanito@detal.com",
 //     "contrasena":"1234567890"
