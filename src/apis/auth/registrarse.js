@@ -16,10 +16,12 @@ router.post("/registrarse", (req, res) => {
             res.json({
               status: "Ya hay un usuario registrado con ese correo",
               statusCode: 403,
+              exists: true,
             });
           } else {
             //* Si no hay usuarios registrados con el correo, valida el documento
             validarDoc();
+            exists: false
           }
         } else {
           console.log(err);
@@ -39,10 +41,12 @@ router.post("/registrarse", (req, res) => {
             res.json({
               status: "Ya hay un usuario registrado con ese documento",
               statusCode: 403,
+              exists: true,
             });
           } else {
             //* Si no hay usuarios registrados con el documento, lo deja crear
             registerUser();
+            exists: false
           }
         } else {
           console.log(err);
