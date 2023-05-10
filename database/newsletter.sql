@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-04-2023 a las 21:02:15
+-- Tiempo de generación: 10-05-2023 a las 17:10:30
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -108,6 +108,26 @@ INSERT INTO `estado_rol` (`id_estado_rol`, `nombre_estado_rol`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `imagenesapp`
+--
+
+CREATE TABLE `imagenesapp` (
+  `id_imagen` int(11) NOT NULL,
+  `url` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `imagenesapp`
+--
+
+INSERT INTO `imagenesapp` (`id_imagen`, `url`) VALUES
+(1, 'https://www.gruposaesa.cl/imagenes/sitio/login_mejorado.png?v=8'),
+(2, 'https://media.istockphoto.com/id/1364735396/es/vector/lista-de-comprobaci%C3%B3n-icono-dise%C3%B1o-plano.jpg?s=612x612&w=0&k=20&c=MY022-KOWot_dwvMEOywSPMJRbqrcJ6NfKfqvi1vM70='),
+(3, 'https://gcdn.emol.cl/humor/files/2018/08/los-simpson.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `nota`
 --
 
@@ -199,7 +219,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `id_estado_usuario`, `documento`, `id_celula`, `id_tipo_documento`, `correo`, `contrasena`, `id_rol`, `forgot_token`, `foto`) VALUES
-(1, 'fulanito', 'de tal', 1, 111, 0, 1, 'fulanito@detal.com', '123', 2, '', '');
+(1, 'lore', 'sandoval', 1, 1, 1, 2, 'lizeth.sandoval@btgpactual.com', '$2b$15$NdLIIGSF/.IXY8NZJPZzDedOd3luH73T2et7jHMGDOAlMCq7UWntq', 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -249,6 +269,12 @@ ALTER TABLE `estado_nota`
 ALTER TABLE `estado_rol`
   ADD PRIMARY KEY (`id_estado_rol`),
   ADD UNIQUE KEY `nombre_estado_rol` (`nombre_estado_rol`);
+
+--
+-- Indices de la tabla `imagenesapp`
+--
+ALTER TABLE `imagenesapp`
+  ADD PRIMARY KEY (`id_imagen`);
 
 --
 -- Indices de la tabla `nota`
@@ -340,7 +366,7 @@ ALTER TABLE `tipo_documento`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `visitas`

@@ -5,7 +5,7 @@ const mySqlConnection = require("../conexion");
 //? Traer todos los datos de la tabla estado rol ============================================
 router.get("/estado-rol", (req, res) => {
     const query =
-      "select * from estado_rol";
+      "select * from estado_rol where id_imagen = ?";
     mySqlConnection.query(query, (err, rows, fields) => {
       if (!err) {
         res.send(rows);

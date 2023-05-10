@@ -6,53 +6,27 @@ const bcryptjs = require("bcrypt");
 //? Validación para registrarse =====================================================================================
 router.post("/registrarse", (req, res) => {
     //* Si no hay usuarios registrados con ese correo, lo deja registrarse (o crear)
-    const { correo } = req.body;
+    const { correo, documento } = req.body;
     mySqlConnection.query(
-      "SELECT * FROM usuario WHERE correo = ? ",
-      [ correo ],
+      "SELECT * FROM usuario WHERE correo = ? or documento = ?",
+      [ correo, documento ],
       (err, rows, fields) => {
         if (!err) {
-          if (rows.length >= 1) {
+          if (rows.length >=1) {
             res.json({
-              status: "Ya hay un usuario registrado con ese correo",
-              statusCode: 403,
-              exists: true,
+              status: "Ya hay un usuario registrado con ese correo o documento",
+              statusCode:403,
+              data: rows
             });
           } else {
-            //* Si no hay usuarios registrados con el correo, valida el documento
-            validarDoc();
-            exists: false
+            registerUser();
           }
         } else {
           console.log(err);
         }
       }
     );
-
-  //? Validación del documento
-  const validarDoc = () =>  {
-    const { documento } = req.body;
-    mySqlConnection.query(
-      "SELECT * FROM usuario WHERE documento = ? ",
-      [ documento ],
-      (err, rows, fields) => {
-        if (!err) {
-          if (rows.length >= 1) {
-            res.json({
-              status: "Ya hay un usuario registrado con ese documento",
-              statusCode: 403,
-              exists: true,
-            });
-          } else {
-            //* Si no hay usuarios registrados con el documento, lo deja crear
-            registerUser();
-            exists: false
-          }
-        } else {
-          console.log(err);
-        }
-      })
-};
+  
 
 
     //* Función para registrar el usuario
@@ -68,7 +42,8 @@ router.post("/registrarse", (req, res) => {
           if (!err) {
             res.json({ 
               status: 200, 
-              message: "Usuario registrado" });
+              message: "Usuario registrado"});
+              
           } else {
             console.log(err);
           }
@@ -80,13 +55,13 @@ router.post("/registrarse", (req, res) => {
 
 //   post json para registrar desde postman
 // {
-//     "nombre":"lore",
-//     "apellido":"sandoval",
-//     "documento":"1000206297",
-//     "id_celula":1, 
-//     "id_tipo_documento":"2",
-//     "correo":"fulanito@detal.com",
-//     "contrasena":"1234567890"
+//   "nombre":"lore",
+//   "apellido":"sandoval",
+//   "documento":"1",
+//   "id_celula":1,
+//   "id_tipo_documento":"2",
+//   "correo":"lizeth.sandoval@btgpactual.com",
+//   "contrasena":"12345"
 // }
 
 module.exports = router;
