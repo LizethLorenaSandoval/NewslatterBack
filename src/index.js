@@ -47,3 +47,5 @@ app.use(require("./apis/tipo_documento"));
 
 //? Autenticación
 app.use(require("./apis/auth/registrarse"));
+//? Registrarse
+app.use(require("./apis/auth/iniciarsesion"));
