@@ -45,6 +45,9 @@ app.use(require("./apis/rol"));
 //? Tipo documento
 app.use(require("./apis/tipo_documento"));
 
+//? Usuario
+app.use(require("./apis/usuario"));
+
 //? Autenticación
 app.use(require("./apis/auth/registrarse"));
 //? Registrarse
