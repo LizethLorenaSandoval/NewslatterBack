@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2023 a las 17:10:30
+-- Tiempo de generación: 30-05-2023 a las 17:25:27
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -203,7 +203,7 @@ CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
-  `id_estado_usuario` int(11) NOT NULL DEFAULT 1,
+  `id_estado_usuario` tinyint(1) NOT NULL DEFAULT 1,
   `documento` bigint(20) NOT NULL,
   `id_celula` int(11) NOT NULL,
   `id_tipo_documento` int(11) NOT NULL,
@@ -219,7 +219,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `id_estado_usuario`, `documento`, `id_celula`, `id_tipo_documento`, `correo`, `contrasena`, `id_rol`, `forgot_token`, `foto`) VALUES
-(1, 'lore', 'sandoval', 1, 1, 1, 2, 'lizeth.sandoval@btgpactual.com', '$2b$15$NdLIIGSF/.IXY8NZJPZzDedOd3luH73T2et7jHMGDOAlMCq7UWntq', 2, NULL, NULL);
+(1, 'lore', 'sandoval', 1, 1, 1, 2, 'lizeth.sandoval@btgpactual.com', '$2b$15$NdLIIGSF/.IXY8NZJPZzDedOd3luH73T2et7jHMGDOAlMCq7UWntq', 1, NULL, NULL),
+(6, 'pepito', 'perez', 0, 3, 2, 2, 'pepito@perez.com', '$2b$15$UzhpN62C7/4kApDBXUEVB.2kf8SsvSDcQvW3MzbZ4qp4w2WurY6B2', 2, NULL, NULL),
+(7, 'fulanito', 'detal', 1, 4, 1, 3, 'fulanito@detal.com', '$2b$15$W8/TuPSaimhdGF4.grpVye.FZkTDGfTwZggqeTAufeC7jAoXhjEj2', 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -366,7 +368,7 @@ ALTER TABLE `tipo_documento`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `visitas`
