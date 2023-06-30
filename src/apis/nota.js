@@ -18,37 +18,33 @@ router.get("/nota", (req, res) => {
 //? Crear nota ============================================
 router.post("/crear_nota", (req, res) => {
   //* Se define función para creación de la nota
-  function createNota() {
     const {
       titulo,
-      descripcion,
       id_celula,
+      estado_nota,
       id_usuario,
-      estado_nota
+      descripcion
     } = req.body;
     mySqlConnection.query(
-      "INSERT INTO nota(titulo,descripcion,id_celula,id_usuario,estado_nota) values (?,?,?,?,?)",
+      "INSERT INTO nota(titulo,id_celula,estado_nota,id_usuario,descripcion) values (?,?,?,?,?)",
       [
-        titulo,
-      descripcion,
-      id_celula,
-      id_usuario,
-      estado_nota
+        titulo,      
+        id_celula,
+        estado_nota,
+        id_usuario,
+        descripcion     
       ],
       (err, rows, fields) => {
         if (!err) {
           res.json({
             status: "Nota creada",
             statusCode: 200,
-            pedidoId: rows.insertId,
           });
         } else {
           console.log(err);
         }
       }
     );
-  }
-  createNota();
-});
+  });
 
 module.exports = router;
