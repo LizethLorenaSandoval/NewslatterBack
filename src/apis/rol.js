@@ -15,5 +15,29 @@ router.get("/rol", (req, res) => {
     });
   });
 
+//? Crear rol ============================================
+router.post("/crear_rol", (req, res) => {
+  //* Se define función para creación de la nota
+    const {
+      nombre_rol
+    } = req.body;
+    mySqlConnection.query(
+      "INSERT INTO rol(nombre_rol) values (?)",
+      [
+        nombre_rol    
+      ],
+      (err, rows, fields) => {
+        if (!err) {
+          res.json({
+            status: "Rol creado",
+            statusCode: 200,
+          });
+        } else {
+          console.log(err);
+        }
+      }
+    );
+  });  
+
 
 module.exports = router;
