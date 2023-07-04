@@ -40,6 +40,4 @@ router.post("/crear_celula", (req, res) => {
     );
   });  
 
-
-
 module.exports = router;
