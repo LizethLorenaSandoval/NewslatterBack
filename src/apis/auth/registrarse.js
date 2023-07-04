@@ -61,7 +61,7 @@ router.post("/registrarse", (req, res) =>{
     "insert into usuario (nombre, apellido, documento, id_celula, id_tipo_documento, correo, contrasena) values (?,?,?,?,?,?,?)";
     mySqlConnection.query(
       query,
-      [nombre, apellido, documento, id_celula, id_tipo_documento, correo, contrasena],
+      [nombre, apellido, documento, id_celula, id_tipo_documento, correo, hash],
       (err, rows, fields) => {
         if (!err) {
           res.json({
@@ -77,6 +77,7 @@ router.post("/registrarse", (req, res) =>{
 });
 
 //   post json para registrar desde postman
+
 // {
 //   "nombre":"lore",
 //   "apellido":"sandoval",
