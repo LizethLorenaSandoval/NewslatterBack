@@ -16,4 +16,30 @@ router.get("/celula", (req, res) => {
   });
 
 
+//? Crear celula ============================================
+router.post("/crear_celula", (req, res) => {
+//* Se define función para creación de la celula
+    const {
+      nombre_celula
+    } = req.body;
+    mySqlConnection.query(
+      "INSERT INTO celula(nombre_celula) values (?)",
+      [
+        nombre_celula    
+      ],
+      (err, rows, fields) => {
+        if (!err) {
+          res.json({
+            status: "Rol creado",
+            statusCode: 200,
+          });
+        } else {
+          console.log(err);
+        }
+      }
+    );
+  });  
+
+
+
 module.exports = router;
