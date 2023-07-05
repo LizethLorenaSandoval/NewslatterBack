@@ -65,7 +65,7 @@ router.post("/registrarse", (req, res) =>{
       (err, rows, fields) => {
         if (!err) {
           res.json({
-            status:200,
+            statusCode:200,
             message: "Usuario creado"
           })
         } else {

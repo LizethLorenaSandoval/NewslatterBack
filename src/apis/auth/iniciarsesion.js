@@ -16,16 +16,11 @@ router.post("/iniciarsesion", async (req, res) => {
           {
             correo: correo,
             contrasena: userRegistered[0].contrasena,
-          },
-          "secretkey",
-          (err, token) => {
-            res.json({
-              status: "Login exitoso",
-              statusCode: 200,
-              userId: userRegistered[0].documento,
-              estado:userRegistered[0].estado,
-              token: token,
-            });
+            id_usuario: userRegistered[0].id_usuario,
+            id_rol: userRegistered[0].id_rol,
+            id_estado_usuario:userRegistered[0].id_estado_usuario,
+            status: "Login exitoso",
+            statusCode: 200
           }
         );
       } else {
