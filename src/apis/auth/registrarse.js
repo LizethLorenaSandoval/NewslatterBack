@@ -14,7 +14,7 @@ router.post("/registrarse", (req, res) =>{
       if (!err) {
         if (rows.length >= 1) {
           res.json({
-            status: "Ya hay un usuario registrado con el correo:", correo,
+            status: "Ya hay un usuario registrado con el correo: "+correo, 
             statusCode: 403,
           });
         } else {
@@ -39,7 +39,7 @@ router.post("/registrarse", (req, res) =>{
         if (!err) {
           if (rows.length >= 1) {
             res.json({
-              status: "Ya hay un usuario registrado con el documento:", documento,
+              status: "Ya hay un usuario registrado con el documento: "+documento,
               statusCode: 403,
             });
           } else {
