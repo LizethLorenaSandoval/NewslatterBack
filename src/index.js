@@ -39,6 +39,9 @@ app.use(require("./apis/imagenesapp"));
 //? nota
 app.use(require("./apis/nota"));
 
+//? mi perfil
+app.use(require("./apis/perfil"));
+
 //? rol
 app.use(require("./apis/rol"));
 

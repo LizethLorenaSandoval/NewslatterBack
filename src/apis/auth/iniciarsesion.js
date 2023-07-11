@@ -38,20 +38,6 @@ router.post("/iniciarsesion", async (req, res) => {
             });
           }
         );
-
-
-
-        // res.json(
-        //   {
-        //     correo: correo,
-        //     contrasena: userRegistered[0].contrasena,
-        //     id_usuario: userRegistered[0].id_usuario,
-        //     id_rol: userRegistered[0].id_rol,
-        //     id_estado_usuario:userRegistered[0].id_estado_usuario,
-        //     status: "Login exitoso",
-        //     statusCode: 200
-        //   }
-        // );
       } else {
         res.json({
           status: "Credenciales incorrectas",
@@ -71,7 +57,7 @@ router.post("/iniciarsesion", async (req, res) => {
           } else {
             res.json({
               status: "No se encuentra ningún usuario registrado con ese correo",
-              statusCode: 403,
+              statusCode: 203,
             });
           }
         } else {
