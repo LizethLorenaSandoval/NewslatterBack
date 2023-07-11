@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mySqlConnection = require("../../conexion");
 const bcryptjs = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 //? Iniciar sesión =====================================================================================
 
@@ -12,7 +13,8 @@ router.post("/iniciarsesion", async (req, res) => {
         userRegistered[0].contrasena
       );
       if (compare) {
-        res.json(
+
+        jwt.sign(
           {
             correo: correo,
             contrasena: userRegistered[0].contrasena,
@@ -20,9 +22,36 @@ router.post("/iniciarsesion", async (req, res) => {
             id_rol: userRegistered[0].id_rol,
             id_estado_usuario:userRegistered[0].id_estado_usuario,
             status: "Login exitoso",
-            statusCode: 200
+            statusCode: 200,
+          },
+          "secretkey",
+          (err, token) => {
+            res.json({
+              correo: correo,
+              contrasena: userRegistered[0].contrasena,
+              id_usuario: userRegistered[0].id_usuario,
+              id_rol: userRegistered[0].id_rol,
+              id_estado_usuario:userRegistered[0].id_estado_usuario,
+              token: token,
+              status: "Login exitoso",
+              statusCode: 200
+            });
           }
         );
+
+
+
+        // res.json(
+        //   {
+        //     correo: correo,
+        //     contrasena: userRegistered[0].contrasena,
+        //     id_usuario: userRegistered[0].id_usuario,
+        //     id_rol: userRegistered[0].id_rol,
+        //     id_estado_usuario:userRegistered[0].id_estado_usuario,
+        //     status: "Login exitoso",
+        //     statusCode: 200
+        //   }
+        // );
       } else {
         res.json({
           status: "Credenciales incorrectas",
