@@ -35,7 +35,9 @@ router.put("/editarperfil/:id_usuario", (req, res) => {
       [nombre, apellido, id_celula, id_tipo_documento, id_usuario],
       (err, rows, fields) => {
         if (!err) {
-          res.json({ status: "Usuario actualizado" });
+          res.json({ 
+            status: "Usuario actualizado",
+            statusCode:200 });
         } else {
           console.log(err);
         }
