@@ -58,14 +58,17 @@ router.post("/crear_rol", (req, res) => {
 
 
 //?Eliminar un rol =====================================================================================
-router.delete("/eliminarrol/:id", (req, res) => {
+router.delete("/eliminarol/:id", (req, res) => {
   const { id_rol } = req.params;
   mySqlConnection.query(
     "DELETE FROM rol WHERE id_rol = ?",
     [id_rol],
     (err, rows, fields) => {
       if (!err) {
-        res.json({ status: "Rol eliminado" });
+        res.json({
+          id_rol,
+          status: "Rol eliminado"
+        });
       } else {
         console.log(err);
       }
