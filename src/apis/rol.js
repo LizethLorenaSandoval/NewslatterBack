@@ -39,24 +39,6 @@ router.post("/crear_rol", (req, res) => {
     );
   });  
 
-//?Traer por id de un rol =====================================================================================
-  router.get("/rolid/:id_rol", (req, res) => {
-    const { id_rol } = req.params;
-    query = "select r.id_rol, r.nombre_rol, er.nombre_estado_rol from rol r inner join estado_rol er on er.id_estado_rol = r.estado_rol WHERE id_rol = ?"
-    mySqlConnection.query(
-      query,
-      [id_rol],
-      (err, rows, fields) => {
-        if (!err) {
-          res.send(rows);
-        } else {
-          console.log(err);
-        }
-      }
-    );
-  });
-
-
 //?Eliminar un rol =====================================================================================
 router.delete("/eliminarol/:id", (req, res) => {
   const { id_rol } = req.params;
